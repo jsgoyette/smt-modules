@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * Implementation of hook_captcha().
+ */
+function smt_captcha_captcha($op, $captcha_type='')
+{
+    switch ($op) {
+        case 'list':
+            return array(
+                'SMT - mod12 arithmetic',
+                'SMT - text arithmetic',
+                'SMT - remainder arithmetic',
+                'SMT - sequence arithmetic'
+            );
+        case 'generate':
+            if ($captcha_type == 'SMT - mod12 arithmetic') {
+                $question_pair = smt_captcha_question();
+            } else if ($captcha_type == 'SMT - text arithmetic') {
+                $question_pair = smt_captcha_text_question();
+            } else if ($captcha_type == 'SMT - remainder arithmetic') {
+                $question_pair = smt_captcha_remainder_question();
+            } else if ($captcha_type == 'SMT - sequence arithmetic') {
+                $question_pair = smt_captcha_sequence_question();
+            }
+            if (!empty($question_pair)) {
+                $captcha = array();
+                $captcha['solution'] = $question_pair['solution'];
+                $captcha['form']['captcha_response'] = array(
+                    '#type' => 'textfield',
+                    '#title' => t($question_pair['question']),
+                    '#required' => TRUE,
+                );
+                return $captcha;
+            }
+            break;
+    }
+}
+
+function smt_captcha_question()
+{
+    $num1 = rand(6, 11);
+    $num2 = rand(6, 11);
+    return array('question' => 'What is '.$num1.' + '.$num2.' (mod12)?', 'solution' => (($num1 + $num2) % 12));
+}
+
+function smt_captcha_text_question()
+{
+    $text = array(2 => 'two', 3 => 'three', 4 => 'four');
+    $num1 = rand(2, 4);
+    $num2 = rand(1, 6);
+    $num3 = rand(3, 5);
+    return array('question' => 'What is '.$text[$num1].' times ('.$num2.' + '.$num3.')?', 'solution' => ($num1 * ($num2 + $num3)));
+}
+
+function smt_captcha_remainder_question()
+{
+    $num1 = rand(8, 27);
+    $num2 = rand(3, 7);
+    return array('question' => 'What is the remainder of '.$num1.' / '.$num2.'?', 'solution' => ($num2 % $num1));
+}
+
+function smt_captcha_sequence_question()
+{
+    $text = array(0 => 'first', 1 => 'second', 2 => 'third', 3 => 'fourth', 4 => 'fifth');
+    $nums = array();
+    for ($i = 0; $i < 5; $i++) {
+        $nums[] = rand(11, 99);
+    }
+    $chosen = rand(0, 4);
+    return array('question' => 'What is the '.$text[$chosen].' number in the sequence: '.implode(' - ', $nums).'?', 'solution' => ($nums[$chosen]));
+}

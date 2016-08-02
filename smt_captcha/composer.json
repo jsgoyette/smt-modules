@@ -1,0 +1,6 @@
+{
+    "name": "drupal/smt_captcha",
+    "description": "Adds additional captchas, such as sequence question",
+    "type": "drupal-module",
+    "license": "GPL-2.0+"
+}

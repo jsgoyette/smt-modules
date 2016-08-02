@@ -1,0 +1,191 @@
+# smt_admin.admin:
+#   path: '/smtadmin/admin'
+#   defaults:
+#     _title: 'Edit Profile'
+#     _form: '\Drupal\smt_admin\Form\ProfileForm'
+#   requirements:
+#     _permission: 'Use SMT Profile'
+
+smt_admin.memberList:
+  path: '/smtadmin'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\MembersController::memberList'
+    _title: 'SMT Member Management'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.pendingList:
+  path: '/smtadmin/pendingmembers'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\MembersController::pendingList'
+    _title: 'Pending Members'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.lapsedList:
+  path: '/smtadmin/lapsedmembers'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\MembersController::lapsedList'
+    _title: 'Lapsed Members'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.memberAdd:
+  path: '/smtadmin/add/{id}'
+  defaults:
+    _form: '\Drupal\smt_admin\Form\MemberAddForm'
+    _title: 'Add Member'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.memberEdit:
+  path: '/smtadmin/edit/{id}'
+  defaults:
+    _form: '\Drupal\smt_admin\Form\MemberEditForm'
+    _title: 'Edit Member'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.memberDelete:
+  path: '/smtadmin/delete/{id}'
+  defaults:
+    _form: '\Drupal\smt_admin\Form\MemberDeleteForm'
+    _title: 'Delete Member'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.search:
+  path: '/smtadmin/search'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\SearchController::content'
+    _title: 'Search Members'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.searchName:
+  path: '/smtadmin/search/name/{fname}/{lname}'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\SearchController::searchName'
+    _title: 'Search Name'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.searchEmail:
+  path: '/smtadmin/search/email/{email}'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\SearchController::searchEmail'
+    _title: 'Search Email'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.export:
+  path: '/smtadmin/export'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\ExportController::content'
+    _title: 'Member List Exports'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.exportMembersCsv:
+  path: '/smtadmin/export/members/csv'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\ExportController::exportMembersCsv'
+    _title: 'Export Members'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.exportActiveMembersCsv:
+  path: '/smtadmin/export/activemembers/csv'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\ExportController::exportActiveMembersCsv'
+    _title: 'Export Active Members'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.exportLapsedMembersCsv:
+  path: '/smtadmin/export/lapsedmembers/csv'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\ExportController::exportLapsedMembersCsv'
+    _title: 'Export Lapsed Members'
+  requirements:
+    _permission: 'Administer SMT Members'
+
+smt_admin.donationList:
+  path: '/smtadmin/donations'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\DonationsController::donationList'
+    _title: 'SMT Donations'
+  requirements:
+    _permission: 'Administer SMT Donations'
+
+smt_admin.donationDetail:
+  path: '/smtadmin/donations/{id}'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\DonationsController::donationDetail'
+    _title: 'SMT Donation Detail'
+  requirements:
+    _permission: 'Administer SMT Donations'
+
+smt_admin.donationConfirm:
+  path: '/smtadmin/donations/confirm/{id}'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\DonationsController::donationConfirm'
+    _title: 'SMT Donation Confirm'
+  requirements:
+    _permission: 'Administer SMT Donations'
+
+smt_admin.registrations:
+  path: '/smtadmin/registrations'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::content'
+    _title: 'SMT Registrations'
+  requirements:
+    _permission: 'Administer SMT Registrations'
+
+smt_admin.registrationsAll:
+  path: '/smtadmin/registrations/all'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::listAll'
+    _title: 'SMT Registrations - All'
+  requirements:
+    _permission: 'Administer SMT Registrations'
+
+smt_admin.registrationsConfirmed:
+  path: '/smtadmin/registrations/confirmed'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::listConfirmed'
+    _title: 'SMT Registrations - Confirmed'
+  requirements:
+    _permission: 'Administer SMT Registrations'
+
+smt_admin.registrationsNew:
+  path: '/smtadmin/registrations/new'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::listNew'
+    _title: 'SMT Registrations - New'
+  requirements:
+    _permission: 'Administer SMT Registrations'
+
+smt_admin.registrationsMarkDuplicate:
+  path: '/smtadmin/registrations/duplicate/{id}'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::markDuplicate'
+    _title: 'SMT Registrations - Mark Duplicate'
+  requirements:
+    _permission: 'Administer SMT Registrations'
+
+smt_admin.registrationsMarkConfirmed:
+  path: '/smtadmin/registrations/confirm/{id}'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::markConfirmed'
+    _title: 'SMT Registrations - Mark Confirmed'
+  requirements:
+    _permission: 'Administer SMT Registrations'
+
+smt_admin.registrationsExport:
+  path: '/smtadmin/registrations/export'
+  defaults:
+    _controller: '\Drupal\smt_admin\Controller\RegistrationsController::export'
+    _title: 'SMT Registrations - Export'
+  requirements:
+    _permission: 'Administer SMT Registrations'

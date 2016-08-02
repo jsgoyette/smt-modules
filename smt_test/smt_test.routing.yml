@@ -1,0 +1,15 @@
+smt_test.content:
+  path: '/test'
+  defaults:
+    _controller: '\Drupal\smt_test\Controller\MainController::content'
+    _title: 'Hello World'
+  requirements:
+    _permission: 'access content'
+
+smt_test.form:
+  path: '/test/form'
+  defaults:
+    _title: 'Example form'
+    _form: '\Drupal\smt_test\Form\TestForm'
+  requirements:
+    _permission: 'access content'

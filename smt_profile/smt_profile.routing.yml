@@ -1,0 +1,111 @@
+smt_profile.welcome:
+  path: '/smtprofile'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\ProfileController::welcome'
+    _title: 'My SMT Profile'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.profile:
+  path: '/smtprofile/profile'
+  defaults:
+    _title: 'Edit Profile'
+    _form: '\Drupal\smt_profile\Form\ProfileForm'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.membership:
+  path: '/smtprofile/membership'
+  defaults:
+    _title: 'Join/Renew'
+    _form: '\Drupal\smt_profile\Form\MembersForm'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.paypal:
+  path: '/smtprofile/membership/paypal/{id}'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\PayPalController::content'
+    _title: 'SMT membership payment'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.paypal_success:
+  path: '/smtprofile/membership/success'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\PayPalController::success'
+    _title: 'SMT membership payment received'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.paypal_cancelled:
+  path: '/smtprofile/membership/cancelled'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\PayPalController::cancelled'
+    _title: 'SMT membership payment cancelled'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.nominations:
+  path: '/smtprofile/nominating2015'
+  defaults:
+    _title: 'Nominations 2015'
+    _form: '\Drupal\smt_profile\Form\NominationsForm'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration:
+  path: '/smtprofile/registration2015'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\RegistrationController::content'
+    _title: '2015 Conference Registration'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration_info:
+  path: '/smtprofile/registration2015/info'
+  defaults:
+    _title: '2015 Conference Registration'
+    _form: '\Drupal\smt_profile\Form\RegistrationInfoForm'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration_options:
+  path: '/smtprofile/registration2015/options'
+  defaults:
+    _title: '2015 Conference Registration'
+    _form: '\Drupal\smt_profile\Form\RegistrationOptionsForm'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration_payment:
+  path: '/smtprofile/registration2015/payment/{idstr}'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment'
+    _title: '2015 Conference Registration'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration_payment_success:
+  path: '/smtprofile/registration2015/success/{idstr}'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment_success'
+    _title: '2015 Conference Registration'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration_payment_cancelled:
+  path: '/smtprofile/registration2015/cancelled/{idstr}'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment_cancelled'
+    _title: '2015 Conference Registration'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_profile.conference_registration_payment_receipt:
+  path: '/smtprofile/registration2015/receipt/{idstr}'
+  defaults:
+    _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment_receipt'
+    _title: '2015 Conference Registration'
+  requirements:
+    _permission: 'Use SMT Profile'

@@ -1,0 +1,7 @@
+name: SMT Captcha
+type: module
+description: Adds additional captchas, such as sequence question
+package: SMT
+core: '8.x'
+dependencies:
+  - captcha

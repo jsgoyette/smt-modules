@@ -1,0 +1,6 @@
+{
+    "name": "drupal/smt_profile",
+    "description": "SMT member profile pages",
+    "type": "drupal-module",
+    "license": "GPL-2.0+"
+}

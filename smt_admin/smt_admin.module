@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Implementation of hook_perm().
+ */
+function smt_admin_perm(){
+  return array('Administer SMT members');
+}
+
+// function smt_admin_theme() {
+//
+//     $theme['search'] = [
+//       'variables' => ['name' => NULL],
+//       'template' => 'search'
+//     ];
+//
+//     return $theme;
+// }
+
+
+/**
+* Implementation of hook_form_user_register_form_alter().
+* Add a question to decrease the number of duplicate entries
+*/
+function smt_admin_form_user_register_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+    $form['smt_member'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('SMT Membership'),
+    );
+    $form['smt_member']['smt_membership'] = array(
+      '#type' => 'radios',
+      '#description' => t('Create a new account only if you are not a SMT member and wish to join SMT. If you are already a member, you already have an account. Please do not create duplicate accounts.'),
+      '#default_value' => 0,
+      '#options' => array(t('I am already a SMT member'), t('I am not a SMT member')),
+    );
+
+    $form['#validate'][] = 'smt_admin_user_validate';
+}
+
+/**
+ * Custom validation function.
+ */
+function smt_admin_user_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+
+    if (empty($form_state->getValue('smt_membership'))) {
+        $form_state->setErrorByName('smt_membership', 'If you are already a SMT member, an account has already been created for you. Please contact SMT administration for more information.');
+    }
+}

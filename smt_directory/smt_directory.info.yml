@@ -1,0 +1,6 @@
+name: SMT Directory
+description: SMT directory pages
+package: SMT
+
+type: module
+core: 8.x

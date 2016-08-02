@@ -1,0 +1,6 @@
+name: SMT Member Profiles
+description: SMT member profile pages and functions
+package: SMT
+
+type: module
+core: 8.x

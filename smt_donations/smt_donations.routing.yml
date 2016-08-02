@@ -1,0 +1,31 @@
+smt_donations.donations:
+  path: '/donations'
+  defaults:
+    _form: '\Drupal\smt_donations\Form\DonationsForm'
+    _title: 'Donate to the SMT'
+  requirements:
+    _permission: 'Use SMT Donations'
+
+smt_donations.paypal:
+  path: '/donations/payment/paypal/{id}'
+  defaults:
+    _controller: '\Drupal\smt_donations\Controller\PayPalController::content'
+    _title: 'SMT donation payment'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_donations.paypal_success:
+  path: '/donations/payment/success/{id}'
+  defaults:
+    _controller: '\Drupal\smt_donations\Controller\PayPalController::success'
+    _title: 'SMT donation payment received'
+  requirements:
+    _permission: 'Use SMT Profile'
+
+smt_donations.paypal_cancelled:
+  path: '/donations/payment/cancelled/{id}'
+  defaults:
+    _controller: '\Drupal\smt_donations\Controller\PayPalController::cancelled'
+    _title: 'SMT donation payment cancelled'
+  requirements:
+    _permission: 'Use SMT Profile'

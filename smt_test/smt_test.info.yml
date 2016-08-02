@@ -1,0 +1,6 @@
+name: SMT Test Module
+description: Creates a page showing "Hello World".
+package: SMT
+
+type: module
+core: 8.x

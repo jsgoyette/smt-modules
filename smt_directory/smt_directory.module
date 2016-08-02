@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implementation of hook_perm().
+ */
+function smt_directory_perm(){
+  return array('Use SMT Directory');
+}

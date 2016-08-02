@@ -1,0 +1,6 @@
+name: SMT Admin
+description: SMT member administrative pages
+package: SMT
+
+type: module
+core: 8.x

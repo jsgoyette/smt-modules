@@ -1,0 +1,60 @@
+<?php
+
+use Drupal\smt_profile\Reminders;
+
+/**
+ * Implementation of hook_perm().
+ */
+function smt_profile_perm() {
+    return array('Use SMT Profile', 'Use functions for SMT members', 'Test SMT Profile');
+}
+
+/**
+ * Implementation of hook_cron().
+ */
+function smt_profile_cron() {
+    Reminders::execute();
+}
+
+/**
+ * Implementation of hook_mail().
+ * Fill in subject and body for emails sent using smt_profile module
+ */
+function smt_profile_mail($key, &$message, $params) {
+
+    global $base_url;
+    $language = $message['language'];
+    $variables = user_mail_tokens($params['account'], $language, '');
+
+    switch($key) {
+        case 'verification':
+            $message['subject'] = 'SMT Profile verification';
+            $message['body'][] = 'Go to ' . $params['url'] . ' to verify your profile.';
+            break;
+        case 'registration2015':
+            $message['subject'] = 'SMT Meeting 2015 Payment';
+            $msg = 'Thank you for registering for the 2015 SMT Meeting in St. Louis. We will send you an email when your payment has been processed. ' . "\n\n";
+            $msg .= 'This is an automatically generated email. Please do not reply to this email.';
+            $message['body'][] = $msg;
+            break;
+        case 'membershipexpiry':
+            $message['subject'] = 'SMT Membership is about to expire';
+            $bodytext = 'Dear SMT member,' . "\n\n";
+            $bodytext .= 'Our records indicate that your membership in the Society for Music Theory ';
+            $bodytext .= 'will expire within ' . $params['days'] . ' days. ';
+            $bodytext .= 'Please take a moment now to renew your membership. Kindly visit <https://societymusictheory.org/>, ';
+            $bodytext .= 'log in to view your SMT Profile page, and click on the "Join/Renew" tab.' . "\n\n";
+            $bodytext .= 'Please renew your SMT membership today, so that we can continue to support you and the discipline at large. ';
+            $bodytext .= 'Please also consider making a donation to the Society; you may do so online at <https://societymusictheory.org/node/559>.' . "\n\n";
+            $bodytext .= 'With sincere thanks,' . "\n\n";
+            $bodytext .= "Victoria Long,\nExecutive Director";
+            $message['body'][] = $bodytext;
+            break;
+        case 'pledgefulfilled':
+            $message['subject'] = 'SMT Pledge Fulfilled';
+            $bodytext = 'A pledged was fulfilled.' . "\n\n";
+            $bodytext .= $base_url . '/smtadmin/donations/detail/' . $params['donation_id'];
+            $message['body'][] = $bodytext;
+            break;
+    }
+}

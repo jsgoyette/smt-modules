@@ -1,0 +1,6 @@
+name: SMT Donations
+description: SMT donation pages
+package: SMT
+
+type: module
+core: 8.x

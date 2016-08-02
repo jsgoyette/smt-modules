@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Implementation of hook_perm().
+ */
+function smt_donations_perm() {
+    return array('Use SMT Donations', 'Administer SMT Donations');
+}
+
+
+/**
+ * Implementation of hook_mail().
+ */
+function smt_donations_mail($key, &$message, $params) {
+
+    $language = $message['language'];
+    $variables = user_mail_tokens($params['account'], $language, '');
+
+    // \Drupal::logger('smt_donations')->notice($key);
+    // \Drupal::logger('smt_donations')->notice(print_r($params, true));
+
+    switch($key) {
+        case 'donation':
+            $message['subject'] = 'Thank you for your charitable contribution to The Society for Music Theory';
+            $bodytext = 'Dear ' . $params['name'] . ':' . chr(13) . chr(10) . chr(13) . chr(10);
+            $bodytext .= 'Thank you for your charitable contribution to The Society for Music Theory. ';
+            $bodytext .= 'Your generous donation will help support the special programming that SMT provides for its membership.' . chr(13) . chr(10). chr(13) . chr(10);
+            $bodytext .= 'This message may be used as documentation of your donation.' . chr(13) . chr(10). chr(13) . chr(10);
+
+            $bodytext .= 'Date: ' . date('D, M d, Y') . chr(13) . chr(10);
+            $bodytext .= 'Amount of donation: $' . $params['amount'] . chr(13) . chr(10);
+            $bodytext .= 'Name of donor: ' . $params['name'] . chr(13) . chr(10);
+            $bodytext .= 'Address: ' . $params['address'] . chr(13) . chr(10) . chr(13) . chr(10);
+
+            $bodytext .= 'If you have any questions, please contact the SMT office at:' . chr(13) . chr(10) . chr(13) . chr(10);
+
+            $bodytext .= 'Victoria L. Long, Executive Director'.chr(13).chr(10).'Society for Music Theory'.chr(13).chr(10);
+            $bodytext .= 'University of Chicago'.chr(13).chr(10).'Department of Music'.chr(13).chr(10).'1010 East 59th Street'.chr(13).chr(10);
+            $bodytext .= 'Chicago, IL 60637'.chr(13).chr(10).'(773) 834-3821'.chr(13).chr(10).'vlong@uchicago.edu'.chr(13).chr(10);
+
+            $message['body'][] = $bodytext;
+            break;
+    }
+}

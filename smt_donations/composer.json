@@ -1,0 +1,6 @@
+{
+    "name": "drupal/smt_donations",
+    "description": "SMT donations",
+    "type": "drupal-module",
+    "license": "GPL-2.0+"
+}

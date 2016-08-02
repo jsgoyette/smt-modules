@@ -1,0 +1,6 @@
+{
+    "name": "drupal/smt_admin",
+    "description": "SMT member admin pages",
+    "type": "drupal-module",
+    "license": "GPL-2.0+"
+}

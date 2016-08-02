@@ -1,0 +1,23 @@
+smt_directory.directory:
+  path: '/smtdirectory'
+  defaults:
+    _controller: '\Drupal\smt_directory\Controller\DirectoryController::directory'
+    _title: 'SMT directory'
+  requirements:
+    _permission: 'Use SMT Directory'
+
+smt_directory.lists:
+  path: '/smtdirectory/lists'
+  defaults:
+    _controller: '\Drupal\smt_directory\Controller\DirectoryController::lists'
+    _title: 'SMT directory lists'
+  requirements:
+    _permission: 'Use SMT Directory'
+
+smt_directory.export_csv:
+  path: '/smtdirectory/lists/export/csv'
+  defaults:
+    _controller: '\Drupal\smt_directory\Controller\DirectoryController::exportCsv'
+    _title: 'SMT directory'
+  requirements:
+    _permission: 'Use SMT Directory'

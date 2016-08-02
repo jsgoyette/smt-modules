@@ -1,0 +1,5 @@
+smt_profile:
+  js:
+    js/smt_profile.profile.js: {}
+  dependencies:
+    - core/jquery

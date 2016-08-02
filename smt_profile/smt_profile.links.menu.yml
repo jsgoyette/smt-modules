@@ -1,0 +1,6 @@
+smt_profile.home_link:
+  title: 'My Profile'
+  description: 'View and update member profile'
+  parent: system.admin_config_development
+  route_name: smt_profile.welcome
+  weight: 100
