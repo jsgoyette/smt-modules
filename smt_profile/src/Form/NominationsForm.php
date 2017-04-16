@@ -45,16 +45,16 @@ class NominationsForm extends FormBase {
             '#markup' => $output
         );
 
-        $form['smtnomination2015_president_elect'] = array(
+        $form['smtnomination2016_president_elect'] = array(
             '#type' => 'textfield',
             '#title' => t('Nominate one President-Elect'),
             '#prefix' => '<hr>',
         );
-        $form['smtnomination2015_members'] = array(
+        $form['smtnomination2016_members'] = array(
             '#type' => 'textfield',
             '#title' => t('Nominate first Member-at-Large'),
         );
-        $form['smtnomination2015_members2'] = array(
+        $form['smtnomination2016_members2'] = array(
             '#type' => 'textfield',
             '#title' => t('Nominate second Member-at-Large'),
         );
@@ -83,11 +83,11 @@ class NominationsForm extends FormBase {
         $db = Database::getConnection();
         $uid = \Drupal::currentUser()->id();
 
-        $vice_value = $form_state->getValue('smtnomination2015_president_elect');
-        $members_value = $form_state->getValue('smtnomination2015_members');
-        $members2_value = $form_state->getValue('smtnomination2015_members2');
+        $vice_value = $form_state->getValue('smtnomination2016_president_elect');
+        $members_value = $form_state->getValue('smtnomination2016_members');
+        $members2_value = $form_state->getValue('smtnomination2016_members2');
 
-        $sql = "INSERT INTO smtnominations2015 (ID, president_elect, members, members2) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO smtnominations2016 (ID, president_elect, members, members2) VALUES (?, ?, ?, ?)";
         $success = $db->query($sql, array($uid, $vice_value, $members_value, $members2_value));
 
         if (!$success) {

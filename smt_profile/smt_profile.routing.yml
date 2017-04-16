@@ -47,65 +47,65 @@ smt_profile.paypal_cancelled:
     _permission: 'Use SMT Profile'
 
 smt_profile.nominations:
-  path: '/smtprofile/nominating2015'
+  path: '/smtprofile/nominating2016'
   defaults:
-    _title: 'Nominations 2015'
+    _title: 'Nominations 2016'
     _form: '\Drupal\smt_profile\Form\NominationsForm'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration:
-  path: '/smtprofile/registration2015'
+  path: '/smtprofile/registration2016'
   defaults:
     _controller: '\Drupal\smt_profile\Controller\RegistrationController::content'
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration_info:
-  path: '/smtprofile/registration2015/info'
+  path: '/smtprofile/registration2016/info'
   defaults:
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
     _form: '\Drupal\smt_profile\Form\RegistrationInfoForm'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration_options:
-  path: '/smtprofile/registration2015/options'
+  path: '/smtprofile/registration2016/options'
   defaults:
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
     _form: '\Drupal\smt_profile\Form\RegistrationOptionsForm'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration_payment:
-  path: '/smtprofile/registration2015/payment/{idstr}'
+  path: '/smtprofile/registration2016/payment/{idstr}'
   defaults:
     _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment'
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration_payment_success:
-  path: '/smtprofile/registration2015/success/{idstr}'
+  path: '/smtprofile/registration2016/success/{idstr}'
   defaults:
     _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment_success'
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration_payment_cancelled:
-  path: '/smtprofile/registration2015/cancelled/{idstr}'
+  path: '/smtprofile/registration2016/cancelled/{idstr}'
   defaults:
     _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment_cancelled'
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
   requirements:
     _permission: 'Use SMT Profile'
 
 smt_profile.conference_registration_payment_receipt:
-  path: '/smtprofile/registration2015/receipt/{idstr}'
+  path: '/smtprofile/registration2016/receipt/{idstr}'
   defaults:
     _controller: '\Drupal\smt_profile\Controller\RegistrationController::payment_receipt'
-    _title: '2015 Conference Registration'
+    _title: '2016 Conference Registration'
   requirements:
     _permission: 'Use SMT Profile'
